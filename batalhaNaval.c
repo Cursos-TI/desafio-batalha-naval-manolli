@@ -1,40 +1,119 @@
 #include <stdio.h>
 
-// Desafio Batalha Naval - MateCheck
-// Este código inicial serve como base para o desenvolvimento do sistema de Batalha Naval.
-// Siga os comentários para implementar cada parte do desafio.
+#define TAMANHO 10
+
+void nivelNovato() {
+    int tabuleiro[5][5] = {0};
+
+    // Navio vertical (posição fixa)
+    int x1 = 0, y1 = 1;
+    for (int i = 0; i < 3; i++) {
+        tabuleiro[x1 + i][y1] = 1;
+        printf("Navio vertical - parte %d: (%d, %d)\n", i + 1, x1 + i, y1);
+    }
+
+    // Navio horizontal (posição fixa)
+    int x2 = 4, y2 = 0;
+    for (int i = 0; i < 3; i++) {
+        tabuleiro[x2][y2 + i] = 2;
+        printf("Navio horizontal - parte %d: (%d, %d)\n", i + 1, x2, y2 + i);
+    }
+
+    printf("\n");
+}
+
+void nivelAventureiro() {
+    int tabuleiro[TAMANHO][TAMANHO] = {0};
+
+    // Navio vertical
+    for (int i = 0; i < 3; i++) {
+        tabuleiro[1 + i][2] = 3;
+    }
+
+    // Navio horizontal
+    for (int i = 0; i < 4; i++) {
+        tabuleiro[6][5 + i] = 3;
+    }
+
+    // Navio na diagonal principal
+    for (int i = 0; i < 3; i++) {
+        tabuleiro[2 + i][2 + i] = 3;
+    }
+
+    // Navio na diagonal secundária
+    for (int i = 0; i < 3; i++) {
+        tabuleiro[5 + i][7 - i] = 3;
+    }
+
+    // Mostrar o tabuleiro completo
+    for (int i = 0; i < TAMANHO; i++) {
+        for (int j = 0; j < TAMANHO; j++) {
+            printf("%d ", tabuleiro[i][j]);
+        }
+        printf("\n");
+    }
+
+    printf("\n");
+}
+
+void nivelMestre() {
+    int cone[5][5] = {
+        {0, 0, 1, 0, 0},
+        {0, 1, 1, 1, 0},
+        {1, 1, 1, 1, 1},
+        {0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0}
+    };
+
+    int cruz[5][5] = {
+        {0, 0, 1, 0, 0},
+        {1, 1, 1, 1, 1},
+        {0, 0, 1, 0, 0},
+        {0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0}
+    };
+
+    int octaedro[5][5] = {
+        {0, 0, 1, 0, 0},
+        {0, 1, 1, 1, 0},
+        {0, 0, 1, 0, 0},
+        {0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0}
+    };
+
+    // Mostrar cone
+    printf("Cone:\n");
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++) {
+            printf("%d ", cone[i][j]);
+        }
+        printf("\n");
+    }
+
+    // Mostrar cruz
+    printf("\nCruz:\n");
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++) {
+            printf("%d ", cruz[i][j]);
+        }
+        printf("\n");
+    }
+
+    // Mostrar octaedro
+    printf("\nOctaedro:\n");
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++) {
+            printf("%d ", octaedro[i][j]);
+        }
+        printf("\n");
+    }
+
+    printf("\n");
+}
 
 int main() {
-    // Nível Novato - Posicionamento dos Navios
-    // Sugestão: Declare uma matriz bidimensional para representar o tabuleiro (Ex: int tabuleiro[5][5];).
-    // Sugestão: Posicione dois navios no tabuleiro, um verticalmente e outro horizontalmente.
-    // Sugestão: Utilize `printf` para exibir as coordenadas de cada parte dos navios.
-
-    // Nível Aventureiro - Expansão do Tabuleiro e Posicionamento Diagonal
-    // Sugestão: Expanda o tabuleiro para uma matriz 10x10.
-    // Sugestão: Posicione quatro navios no tabuleiro, incluindo dois na diagonal.
-    // Sugestão: Exiba o tabuleiro completo no console, mostrando 0 para posições vazias e 3 para posições ocupadas.
-
-    // Nível Mestre - Habilidades Especiais com Matrizes
-    // Sugestão: Crie matrizes para representar habilidades especiais como cone, cruz, e octaedro.
-    // Sugestão: Utilize estruturas de repetição aninhadas para preencher as áreas afetadas por essas habilidades no tabuleiro.
-    // Sugestão: Exiba o tabuleiro com as áreas afetadas, utilizando 0 para áreas não afetadas e 1 para áreas atingidas.
-
-    // Exemplos de exibição das habilidades:
-    // Exemplo para habilidade em cone:
-    // 0 0 1 0 0
-    // 0 1 1 1 0
-    // 1 1 1 1 1
-    
-    // Exemplo para habilidade em octaedro:
-    // 0 0 1 0 0
-    // 0 1 1 1 0
-    // 0 0 1 0 0
-
-    // Exemplo para habilidade em cruz:
-    // 0 0 1 0 0
-    // 1 1 1 1 1
-    // 0 0 1 0 0
-
+    nivelNovato();
+    nivelAventureiro();
+    nivelMestre();
     return 0;
 }
